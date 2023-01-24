@@ -22,7 +22,7 @@ public class Person {
     @Column(name = "year_of_birth")
     private int yearOfBirth;
 
-    @OneToMany(mappedBy = "owner")
+    @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER)
     private List<Book> books;
 
     public Person(String fullName, int yearOfBirth) {
@@ -38,10 +38,12 @@ public class Person {
     }
 
     public void setId(int id) {
+        System.out.println(id);
         this.id = id;
     }
 
     public String getFullName() {
+        System.out.println(fullName);
         return fullName;
     }
 
@@ -58,6 +60,7 @@ public class Person {
     }
 
     public List<Book> getBooks() {
+        System.out.println(books);
         return books;
     }
 

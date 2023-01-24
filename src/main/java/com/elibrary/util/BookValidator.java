@@ -27,9 +27,9 @@ public class BookValidator implements Validator {
     public void validate(Object target, Errors errors) {
         Book book = (Book) target;
 
-        if (bookDAO.show(book.getTitle(), book.getAuthor()).isPresent()) {
-            errors.rejectValue("title", "", "Книга с таким именем и автором уже зарегистрирована");
-            errors.rejectValue("author", "", "Книга с таким именем и автором уже зарегистрирована");
-        }
+//        if (bookDAO.show(book.getTitle(), book.getAuthor()).isPresent()) {
+//            errors.rejectValue("title", "", "Книга с таким именем и автором уже зарегистрирована");
+//            errors.rejectValue("author", "", "Книга с таким именем и автором уже зарегистрирована");
+//        }
     }
 }

@@ -8,17 +8,17 @@
 
 <p th:text="${person.getFullName() + ', ' + person.getYearOfBirth()}">VALUE</p>
 <br>
-<a th:if="${not #lists.isEmpty(books)}">
+<a th:if="${not #lists.isEmpty(person.getBooks())}">
     <hr/>
     <b>Книги:</b>
-    <div th:each="book : ${books}">
+    <div th:each="book : ${person.getBooks()}">
 
         <a th:href="@{/books/{id}(id=${book.getId()})}"
            th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getYear()}">books</a>
     </div>
     <hr/>
 </a>
-<a th:if="${#lists.isEmpty(books)}">
+<a th:if="${#lists.isEmpty(person.getBooks())}">
     <p>Человек пока не взял ни одной книги</p>
     <hr/>
 </a>
