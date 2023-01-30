@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Человек</title>
@@ -13,8 +13,9 @@
     <b>Книги:</b>
     <div th:each="book : ${person.getBooks()}">
 
-        <a th:href="@{/books/{id}(id=${book.getId()})}"
-           th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getYear()}">books</a>
+        <p style="color:red" th:style="${book.isOutOfDate}?'color:red':'color:black'">
+            <a th:text="${book.getTitle() + ', ' + book.getAuthor() + ', ' + book.getYear()}">books</a>
+        </p>
     </div>
     <hr/>
 </a>

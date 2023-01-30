@@ -4,6 +4,8 @@ import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 @Entity
 @Table(name = "Book")
@@ -27,6 +29,13 @@ public class Book {
     @ManyToOne
     @JoinColumn(name = "person_id", referencedColumnName = "id")
     private Person owner;
+
+    @Column(name = "booked_at")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date bookedAt;
+
+    @Transient
+    private boolean outOfDate;
 
     public Book() {
     }
@@ -75,6 +84,22 @@ public class Book {
 
     public void setOwner(Person owner) {
         this.owner = owner;
+    }
+
+    public Date getBookedAt() {
+        return bookedAt;
+    }
+
+    public void setBookedAt(Date bookedAt) {
+        this.bookedAt = bookedAt;
+    }
+
+    public boolean isOutOfDate() {
+        return outOfDate;
+    }
+
+    public void setOutOfDate(boolean outOfDate) {
+        this.outOfDate = outOfDate;
     }
 
     @Override
